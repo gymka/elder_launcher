@@ -23,6 +23,10 @@ class NativeMethods {
     platformContacts.invokeMethod('launchDialerWithNumber', {'number': number});
   }
 
+  void launchDialerAppOnly() {
+    platformContacts.invokeMethod('openDialer');
+  }
+
   void startPhoneCall(String number) {
     platformContacts.invokeMethod('startPhoneCall', {'number': number});
   }

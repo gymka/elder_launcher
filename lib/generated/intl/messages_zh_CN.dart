@@ -28,6 +28,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "btnAddFavContacts": MessageLookupByLibrary.simpleMessage("添加联系人"),
         "btnAllApps": MessageLookupByLibrary.simpleMessage("全部应用"),
         "btnAllContacts": MessageLookupByLibrary.simpleMessage("全部联系人"),
+        "btnOpenDialer": MessageLookupByLibrary.simpleMessage("拨号盘"),
         "btnBackToHome": MessageLookupByLibrary.simpleMessage("返回"),
         "btnGrantPermission": MessageLookupByLibrary.simpleMessage("请允许必要权限"),
         "btnSetDefaultLauncher":

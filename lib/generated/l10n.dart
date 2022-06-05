@@ -90,6 +90,16 @@ class S {
     );
   }
 
+  /// `dialog panel`
+  String get btnOpenDialog {
+    return Intl.message(
+      'dialer',
+      name: 'btnOpenDialer',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Add Favourite Apps`
   String get btnAddFavApps {
     return Intl.message(
