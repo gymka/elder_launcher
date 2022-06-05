@@ -60,180 +60,171 @@ class _HomePageState extends State<HomePage> {
       child: ChangeNotifierProvider(
         create: (_) => DateTimeProvider(),
         child: Scaffold(
-          backgroundColor: Theme.of(context).backgroundColor,
-          body: CustomScrollView(
-            controller: _scrollController,
-            slivers: [
-              SliverAppBar(
-                expandedHeight: MediaQuery.of(context).size.height * 0.35,
-                elevation: 0,
-                pinned: true,
-                stretch: true,
-                toolbarHeight: 110,
-                backgroundColor: Color(0xff161b22),
-                // shape: const RoundedRectangleBorder(
-                //     borderRadius: BorderRadius.only(
-                //   bottomLeft: Radius.circular(40),
-                //   bottomRight: Radius.circular(40),
-                // )),
-                title: AnimatedOpacity(
-                    duration: Duration(milliseconds: 500),
-                    opacity: _isScrolled ? 1.0 : 0,
-                    child: Column(
-                      children: [
-                        Consumer<DateTimeProvider>(
-                          builder: (_, dateTimeProvider, __) => AutoSizeText(
-                            dateTimeProvider.time,
-                            maxLines: 1,
-                            style: TextStyles.headerTime,
-                          ),
+            backgroundColor: Theme.of(context).backgroundColor,
+            body: NestedScrollView(
+              controller: _scrollController,
+              headerSliverBuilder: (BuildContext context, bool inSiderCorddd) {
+                return [
+                  SliverAppBar(
+                    expandedHeight: 250,
+                    elevation: 0,
+                    pinned: true,
+                    stretch: true,
+                    toolbarHeight: 110,
+                    backgroundColor: Color(0xff161b22),
+                    centerTitle: true,
+                    floating: false,
+                    snap: false,
+                    actions: <Widget>[
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                        child: IconButton(
+                          icon: const Icon(Icons.settings),
+                          onPressed: () {
+                            if (DefaultTabController.of(context) != null) {
+                              openEditDialog(
+                                  DefaultTabController.of(context)!.index);
+                            }
+                          },
                         ),
-                        TabBar(tabs: [
-                          Tab(
-                            child: Center(
-                              child: Row(
-                                mainAxisSize: MainAxisSize.min,
-                                children: <Widget>[
-                                  const Padding(
-                                    padding: EdgeInsets.fromLTRB(0, 0, 4.0, 0),
-                                    child: Icon(Icons.apps),
-                                  ),
-                                  Flexible(
-                                    child: AutoSizeText(
-                                      S.of(context).Apps,
-                                      group: _appBarTextSizeGroup,
-                                      maxLines: 1,
-                                      style: const TextStyle(fontSize: 20),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
-                          Tab(
-                            child: Center(
-                              child: Row(
-                                mainAxisSize: MainAxisSize.min,
-                                children: <Widget>[
-                                  const Padding(
-                                    padding: EdgeInsets.fromLTRB(0, 0, 4.0, 0),
-                                    child: Icon(Icons.contacts),
-                                  ),
-                                  Flexible(
-                                    child: AutoSizeText(
-                                      S.of(context).Contacts,
-                                      group: _appBarTextSizeGroup,
-                                      maxLines: 1,
-                                      style: const TextStyle(fontSize: 20),
-                                    ),
-                                  )
-                                ],
-                              ),
-                            ),
-                          ),
-                        ]),
-                      ],
-                    )),
-                flexibleSpace: FlexibleSpaceBar(
-                    collapseMode: CollapseMode.pin,
+                      ),
+                    ],
                     title: AnimatedOpacity(
-                      duration: Duration(milliseconds: 200),
-                      opacity: _isScrolled ? 0.0 : 1.0,
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children: [
-                          Consumer<DateTimeProvider>(
-                            builder: (_, dateTimeProvider, __) => AutoSizeText(
-                              dateTimeProvider.time,
-                              maxLines: 1,
-                              style: TextStyles.headerTime,
+                        duration: Duration(milliseconds: 500),
+                        opacity: _isScrolled ? 1.0 : 0,
+                        child: Column(
+                          children: [
+                            Consumer<DateTimeProvider>(
+                              builder: (_, dateTimeProvider, __) =>
+                                  AutoSizeText(
+                                dateTimeProvider.time,
+                                maxLines: 1,
+                                style: TextStyles.headerTime,
+                              ),
                             ),
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
+                            TabBar(tabs: [
+                              Tab(
+                                child: Center(
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: <Widget>[
+                                      const Padding(
+                                        padding:
+                                            EdgeInsets.fromLTRB(0, 0, 4.0, 0),
+                                        child: Icon(Icons.apps),
+                                      ),
+                                      Flexible(
+                                        child: AutoSizeText(
+                                          S.of(context).Apps,
+                                          group: _appBarTextSizeGroup,
+                                          maxLines: 1,
+                                          style: const TextStyle(fontSize: 20),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                              Tab(
+                                child: Center(
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: <Widget>[
+                                      const Padding(
+                                        padding:
+                                            EdgeInsets.fromLTRB(0, 0, 4.0, 0),
+                                        child: Icon(Icons.contacts),
+                                      ),
+                                      Flexible(
+                                        child: AutoSizeText(
+                                          S.of(context).Contacts,
+                                          group: _appBarTextSizeGroup,
+                                          maxLines: 1,
+                                          style: const TextStyle(fontSize: 20),
+                                        ),
+                                      )
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ]),
+                          ],
+                        )),
+                    flexibleSpace: FlexibleSpaceBar(
+                        collapseMode: CollapseMode.pin,
+                        centerTitle: true,
+                        title: AnimatedOpacity(
+                          duration: Duration(milliseconds: 200),
+                          opacity: _isScrolled ? 0.0 : 1.0,
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.end,
                             children: [
                               Consumer<DateTimeProvider>(
-                                builder: (_, dateTimeProvider, __) => Text(
+                                builder: (_, dateTimeProvider, __) =>
+                                    AutoSizeText(
+                                  dateTimeProvider.time,
+                                  maxLines: 1,
+                                  style: TextStyles.headerTime,
+                                ),
+                              ),
+                              Consumer<DateTimeProvider>(
+                                builder: (_, dateTimeProvider, __) =>
+                                    AutoSizeText(
                                   dateTimeProvider.date,
-                                  style: TextStyle(
-                                    color: Colors.grey.shade500,
-                                    fontSize: 20,
+                                  maxLines: 1,
+                                  style: TextStyles.headerDate,
+                                ),
+                              ),
+                              TabBar(tabs: [
+                                Tab(
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: <Widget>[
+                                      const Padding(
+                                        padding:
+                                            EdgeInsets.fromLTRB(0, 0, 4.0, 0),
+                                        child: Icon(Icons.apps),
+                                      ),
+                                      Flexible(
+                                        child: AutoSizeText(
+                                          S.of(context).Apps,
+                                          group: _appBarTextSizeGroup,
+                                          // maxLines: 1,
+                                          style: const TextStyle(fontSize: 30),
+                                        ),
+                                      ),
+                                    ],
                                   ),
                                 ),
-                              ),
-                              // Padding(
-                              //   padding:
-                              //       const EdgeInsets.symmetric(horizontal: 8.0),
-                              //   child: IconButton(
-                              //     icon: const Icon(Icons.edit),
-                              //     onPressed: () {
-                              //       if (DefaultTabController.of(context) !=
-                              //           null) {
-                              //         openEditDialog(
-                              //             DefaultTabController.of(context)!
-                              //                 .index);
-                              //       }
-                              //     },
-                              //   ),
-                              // ),
+                                Tab(
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: <Widget>[
+                                      const Padding(
+                                        padding:
+                                            EdgeInsets.fromLTRB(0, 0, 4.0, 0),
+                                        child: Icon(Icons.contacts),
+                                      ),
+                                      Flexible(
+                                        child: AutoSizeText(
+                                          S.of(context).Contacts,
+                                          group: _appBarTextSizeGroup,
+                                          // maxLines: 1,
+                                          style: const TextStyle(fontSize: 30),
+                                        ),
+                                      )
+                                    ],
+                                  ),
+                                ),
+                              ]),
                             ],
                           ),
-                          TabBar(tabs: [
-                            Tab(
-                              child: Center(
-                                child: Row(
-                                  mainAxisSize: MainAxisSize.min,
-                                  children: <Widget>[
-                                    const Padding(
-                                      padding:
-                                          EdgeInsets.fromLTRB(0, 0, 4.0, 0),
-                                      child: Icon(Icons.apps),
-                                    ),
-                                    Flexible(
-                                      child: AutoSizeText(
-                                        S.of(context).Apps,
-                                        group: _appBarTextSizeGroup,
-                                        maxLines: 1,
-                                        style: const TextStyle(fontSize: 50),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                            Tab(
-                              child: Center(
-                                child: Row(
-                                  mainAxisSize: MainAxisSize.min,
-                                  children: <Widget>[
-                                    const Padding(
-                                      padding:
-                                          EdgeInsets.fromLTRB(0, 0, 4.0, 0),
-                                      child: Icon(Icons.contacts),
-                                    ),
-                                    Flexible(
-                                      child: AutoSizeText(
-                                        S.of(context).Contacts,
-                                        group: _appBarTextSizeGroup,
-                                        maxLines: 1,
-                                        style: const TextStyle(fontSize: 50),
-                                      ),
-                                    )
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ]),
-                        ],
-                      ),
-                    )),
-              ),
-              const SliverFillRemaining(
-                  child:
-                      TabBarView(children: <Widget>[AppsTab(), ContactsTab()])),
-            ],
-          ),
-        ),
+                        )),
+                  )
+                ];
+              },
+              body: TabBarView(children: <Widget>[AppsTab(), ContactsTab()]),
+            )),
       ),
     );
   }
