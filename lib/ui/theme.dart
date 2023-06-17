@@ -53,7 +53,7 @@ class TextStyles {
   static const infoMessage = TextStyle(fontSize: 25);
   static const actionButtonLabel = TextStyle(color: Colors.white, fontSize: 30);
   static const primaryButtonLabel =
-      TextStyle(color: Colors.white, fontSize: 25, height: 1);
+      TextStyle(color: Colors.white, fontSize: 50, height: 1);
   static const dialogTitle = TextStyle(fontSize: 25);
   static const dialogSubtitle = TextStyle(fontSize: 24);
   static const dialogAction = TextStyle(

@@ -90,16 +90,6 @@ class S {
     );
   }
 
-  /// `dialog panel`
-  String get btnOpenDialog {
-    return Intl.message(
-      'dialer',
-      name: 'btnOpenDialer',
-      desc: '',
-      args: [],
-    );
-  }
-
   /// `Add Favourite Apps`
   String get btnAddFavApps {
     return Intl.message(
@@ -314,11 +304,11 @@ class AppLocalizationDelegate extends LocalizationsDelegate<S> {
       Locale.fromSubtags(languageCode: 'fr'),
       Locale.fromSubtags(languageCode: 'hi'),
       Locale.fromSubtags(languageCode: 'it'),
+      Locale.fromSubtags(languageCode: 'lt'),
       Locale.fromSubtags(languageCode: 'nl'),
       Locale.fromSubtags(languageCode: 'pl'),
       Locale.fromSubtags(languageCode: 'pt'),
       Locale.fromSubtags(languageCode: 'ru'),
-      Locale.fromSubtags(languageCode: 'zh', countryCode: 'CN'),
     ];
   }
 

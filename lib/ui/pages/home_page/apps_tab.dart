@@ -75,8 +75,9 @@ class AppsTab extends StatelessWidget {
         ),
       ),
       Align(
-          alignment: Alignment.bottomCenter,
-          child: PrimaryButton(S.of(context).btnAllApps, openAllApps)),
+        alignment: Alignment.bottomCenter,
+        child: PrimaryButton(S.of(context).btnAllApps, openAllApps),
+      ),
     ]);
   }
 }

@@ -28,7 +28,6 @@ class MainActivity : FlutterActivity() {
                         openDialerWithNumber(number)
                     }
                 }
-                "openDialer" -> openDialer()
                 "startPhoneCall" -> {
                     if (call.hasArgument("number")) {
                         val number = call.argument<String>("number")!!
@@ -70,15 +69,6 @@ class MainActivity : FlutterActivity() {
     private fun openDialerWithNumber(number: String) {
         val intent = Intent(Intent.ACTION_DIAL)
         intent.data = Uri.parse("tel:$number")
-        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-        if (intent != null) {
-            startActivity(intent)
-        }
-    }
-
-        private fun openDialer() {
-        val intent = Intent(Intent.ACTION_DIAL)
-        intent.data = Uri.parse("tel:")
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
         if (intent != null) {
             startActivity(intent)
@@ -129,7 +119,7 @@ class MainActivity : FlutterActivity() {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == DEFAULT_LAUNCHER_INTENT_REQUEST_CODE) {
             if (resultCode != RESULT_OK) {
-                MethodChannel(flutterEngine?.dartExecutor?.binaryMessenger, CHANNEL_CORE)?.invokeMethod("setDefaultLauncherFailure", null)
+                MethodChannel(flutterEngine?.dartExecutor?.binaryMessenger!!, CHANNEL_CORE).invokeMethod("setDefaultLauncherFailure", null)
             }
         }
     }

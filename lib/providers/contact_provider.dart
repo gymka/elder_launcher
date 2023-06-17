@@ -108,10 +108,6 @@ class ContactProvider extends ChangeNotifier {
     NativeMethods().launchContactsApp();
   }
 
-  Future<void> launchDialerApp() async {
-    NativeMethods().launchDialerAppOnly();
-  }
-
   Future<void> callPhoneNumber(String number) async {
     if (_isTelephoneFeatureChecked) {
       if (_isPhonePermissionGranted && _hasTelephoneFeature) {
